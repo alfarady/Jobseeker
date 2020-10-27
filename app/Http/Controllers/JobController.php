@@ -8,7 +8,7 @@ use App\Subscription;
 use App\Setting;
 
 use App\Mail\ApplicantMail;
-
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -214,7 +214,10 @@ class JobController extends Controller
     {
         try {
             $job = JobApplicant::find($id);
-            $job->update(['status' => $request->status]);
+            $job->update([
+                'status' => $request->status,
+                'last_update' => Carbon::now(),
+            ]);
 
             $setting = Setting::first();
 

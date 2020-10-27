@@ -9,6 +9,7 @@ use App\Job;
 use App\JobApplicant;
 use App\Slider;
 use App\Sponsor;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -54,7 +55,10 @@ class HomeController extends Controller
     }
 
     public function showPengumuman() {
-        $data = JobApplicant::where('status', 'approved')->latest()->get();
+        $data = JobApplicant::where([
+                            ['status', 'approved'],
+                            ['last_update', '>', Carbon::now()->subDays(30)]
+                        ])->latest()->get();
 
         if(Auth::check()){
             $accepted = JobApplicant::where([
