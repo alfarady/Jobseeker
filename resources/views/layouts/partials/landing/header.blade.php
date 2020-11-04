@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-
+    
     <div class="container">
         <div class="inner-header">
             <div class="d-flex justify-content-between">

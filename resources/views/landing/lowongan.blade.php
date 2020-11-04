@@ -30,7 +30,7 @@
                                     <span class="btn-show text-primary" style="cursor: pointer;" data-href="{{ route('home.showLowongan', [$job->id]) }}"><b>{{ $job->title ?? '' }}</b></span>
                                 </div>
                                 <div class="col text-right">
-                                    <i class="fa fa-calendar fa-sm"></i> 16H
+                                    <i class="fa fa-calendar fa-sm"> {{ $job->due_at }}</i>
                                 </div>
                             </div>
                         </li>
